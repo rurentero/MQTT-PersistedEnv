@@ -1,0 +1,28 @@
+version: '3.3'
+services: 
+    mosquitto:
+        build: 
+            context: .
+            dockerfile: Dockerfile_mosquitto
+        ports:
+            - '1883:1883'
+    mongodb:
+        image: 'bitnami/mongodb:latest'
+        volumes:
+            - 'mongo_vol:/bitnami/mongodb'
+        environment: 
+            - ALLOW_EMPTY_PASSWORD=yes
+            - MONGODB_DATABASE=mqttdb
+        ports:
+            - "27017:27017"
+    mqtt_app:
+        build: 
+            context: .
+            dockerfile: Dockerfile_mqtt_app
+        depends_on:
+            - "mongodb"
+            - "mosquitto"
+
+
+volumes:
+    mongo_vol:

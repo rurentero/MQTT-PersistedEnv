@@ -1,0 +1,10 @@
+FROM ubuntu:bionic
+
+WORKDIR /usr/app
+
+RUN apt-get update
+RUN apt-get -y install mosquitto mosquitto-clients
+
+EXPOSE 1883
+
+CMD ["/usr/sbin/mosquitto"]
