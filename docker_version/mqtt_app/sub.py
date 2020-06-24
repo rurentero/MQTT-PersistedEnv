@@ -3,9 +3,10 @@ import paho.mqtt.client as mqtt
 import sys
 
 # Vars
-#MQTT_BROKER = "localhost"
-MQTT_BROKER = "mosquitto" # Docker version
-MQTT_PORT = 1883
+#MQTT_BROKER = "mosquitto" # Docker version
+#MQTT_PORT = 1883
+MQTT_BROKER = "158.49.113.46"   # IP Máquina demo
+MQTT_PORT = 80                  # Puerto 80 para demo.
 
 # Basic Configuration
 client = mqtt.Client()
